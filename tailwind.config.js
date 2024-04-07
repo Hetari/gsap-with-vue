@@ -4,6 +4,6 @@ export default {
   theme: {
     extend: {},
   },
-  purge: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
+  content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   plugins: [],
 };

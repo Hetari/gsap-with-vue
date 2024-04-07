@@ -1,42 +1,35 @@
-/* ./src/index.css */
-
-@import './base.css';
-
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
-}
-
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
-}
-
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
-}
-
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
-
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
-
-}
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  code {
+    @apply font-mono text-sm bg-neutral-400/30 dark:bg-zinc-900 text-orange-600 dark:text-orange-400 p-1
+  }
+
+  h1 {
+    @apply text-3xl font-bold text-zinc-800 dark:text-zinc-50
+  }
+
+  main {
+    @apply mx-auto max-w-3xl ring-1 bg-zinc-900 ring-zinc-300/20 xl:max-w-5xl min-h-screen p-10
+  }
+
+  a {
+    @apply text-blue-700 dark:text-blue-600 hover:text-blue-500
+  }
+
+  button {
+    @apply bg-slate-500 hover:bg-slate-600 text-zinc-800 dark:text-zinc-50 px-4 py-2 rounded-md
+  }
+
+  .btn {
+    @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-[background-color] duration-200 ease-in-out;
+  }
+}
+
+@layer utilities {
+  .container {
+    @apply mx-auto max-w-3xl ring-1 bg-gray-200 dark:bg-zinc-900 ring-zinc-300/20 xl:max-w-5xl min-h-screen p-10
+  }
+}
