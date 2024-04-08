@@ -26,7 +26,7 @@
     </p>
 
     <div class="mt-20">
-      <div id="blue-box" class="w-20 h-20 bg-blue-500 rounded-lg" />
+      <div ref="box" id="blue-box" class="size-20 bg-blue-500 rounded-lg" />
     </div>
     <div class="mt-20 text-end">
       <Button />
@@ -35,6 +35,27 @@
 </template>
 
 <script setup lang="ts">
+import { ref, onMounted, type Ref } from "vue";
 import { Button } from "@/components";
-// TODO: Implement the gsap.to() method
+
+// TODO:
+// [x] Implement the gsap.to() method
+import { gsap } from "gsap";
+const box: Ref<null> = ref(null);
+onMounted(() => {
+  gsap.fromTo(
+    box.value,
+    {
+      x: 0,
+    },
+    {
+      xPercent: 150,
+      rotate: 105,
+      duration: 2.5,
+      ease: "circ.inOut",
+      repeat: -1,
+      yoyo: true,
+    }
+  );
+});
 </script>
