@@ -41,14 +41,10 @@
         </li>
       </ol>
     </div>
-    <div class="mt-20 text-end">
-      <Button />
-    </div>
   </main>
 </template>
 
 <script setup lang="ts">
 import { RouterLink } from "vue-router";
 import { animations } from "@/constants";
-import { Button } from "@/components";
 </script>

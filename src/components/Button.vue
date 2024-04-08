@@ -1,5 +1,5 @@
 <template>
-  <button class="btn">
+  <button type="button" @click="$router.push({ name: 'home' })" class="btn">
     <slot>Go Back</slot>
   </button>
 </template>
