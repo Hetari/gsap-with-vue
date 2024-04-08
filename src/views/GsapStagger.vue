@@ -28,13 +28,13 @@
 
     <div class="mt-20">
       <div class="flex gap-5">
-        <div class="w-20 h-20 bg-indigo-200 rounded-lg stagger-box" />
-        <div class="w-20 h-20 bg-indigo-300 rounded-lg stagger-box" />
-        <div class="w-20 h-20 bg-indigo-400 rounded-lg stagger-box" />
-        <div class="w-20 h-20 bg-indigo-500 rounded-lg stagger-box" />
-        <div class="w-20 h-20 bg-indigo-600 rounded-lg stagger-box" />
-        <div class="w-20 h-20 bg-indigo-700 rounded-lg stagger-box" />
-        <div class="w-20 h-20 bg-indigo-800 rounded-lg stagger-box" />
+        <div class="size-20 bg-indigo-200 rounded-lg stagger-box" />
+        <div class="size-20 bg-indigo-300 rounded-lg stagger-box" />
+        <div class="size-20 bg-indigo-400 rounded-lg stagger-box" />
+        <div class="size-20 bg-indigo-500 rounded-lg stagger-box" />
+        <div class="size-20 bg-indigo-600 rounded-lg stagger-box" />
+        <div class="size-20 bg-indigo-700 rounded-lg stagger-box" />
+        <div class="size-20 bg-indigo-800 rounded-lg stagger-box" />
       </div>
     </div>
     <div class="mt-20 text-end">
@@ -44,6 +44,25 @@
 </template>
 
 <script setup lang="ts">
-// TODO: Implement the gsap.stagger() method
 import { Button } from "@/components";
+import { gsap } from "gsap";
+import { onMounted } from "vue";
+// TODO:
+// [x] Implement the gsap.stagger() method
+onMounted(() => {
+  gsap.to(".stagger-box", {
+    y: 200,
+    rotate: 30,
+    borderRadius: 10,
+    repeat: -1,
+    yoyo: true,
+    stagger: {
+      amount: 1,
+      grid: [2, 1],
+      axis: "y",
+      ease: "circ.inOut",
+      from: "center",
+    },
+  });
+});
 </script>
