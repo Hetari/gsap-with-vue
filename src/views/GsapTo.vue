@@ -43,19 +43,13 @@ import { Button } from "@/components";
 import { gsap } from "gsap";
 const box: Ref<null> = ref(null);
 onMounted(() => {
-  gsap.fromTo(
-    box.value,
-    {
-      x: 0,
-    },
-    {
-      xPercent: 150,
-      rotate: 105,
-      duration: 2.5,
-      ease: "circ.inOut",
-      repeat: -1,
-      yoyo: true,
-    }
-  );
+  gsap.to(box.value, {
+    xPercent: 150,
+    rotate: 105,
+    duration: 2.5,
+    ease: "circ.inOut",
+    repeat: -1,
+    yoyo: true,
+  });
 });
 </script>
