@@ -31,7 +31,7 @@
     </p>
 
     <div class="mt-20 space-y-10">
-      <button :on-click="() => {}">Play/Pause</button>
+      <button @click="PlayPause">Play/Pause</button>
 
       <div id="yellow-box" class="w-20 h-20 bg-yellow-500 rounded-lg" />
     </div>
@@ -42,6 +42,55 @@
 </template>
 
 <script setup lang="ts">
-// TODO: Implement the gsap timeline
 import { Button } from "@/components";
+import { gsap } from "gsap";
+import { onMounted } from "vue";
+// TODO:
+// [x] Implement the gsap timeline
+
+const tl: gsap.core.Timeline = gsap.timeline({
+  repeat: -1,
+  yoyo: true,
+  // repeatDelay: 1,
+});
+
+onMounted(() => {
+  // here we can use the css selector instead of the vue refs
+  tl.to("#yellow-box", {
+    x: 300,
+    rotate: -180,
+    duration: 0.7,
+    ease: "power1.inOut",
+  });
+
+  tl.fromTo(
+    "#yellow-box",
+    {
+      // we can remove the scale here and use tl.to() only
+      scale: 1,
+    },
+    {
+      scale: 2,
+      duration: 0.5,
+      ease: "expo.inOut",
+    }
+  );
+
+  tl.to("#yellow-box", {
+    x: 600,
+    borderRadius: 50,
+    duration: 1,
+    ease: "expo.inOut",
+  });
+});
+
+/**
+ * Toggle the play and pause state of the animation timeline.
+ *
+ * @returns void
+ */
+const PlayPause: () => void = () => {
+  // Toggle pause state of the timeline
+  tl.paused(!tl.paused());
+};
 </script>
