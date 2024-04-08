@@ -47,7 +47,7 @@
       </svg>
     </div>
 
-    <div class="mt-20 w-full h-screen">
+    <div class="mt-20 w-full h-screen" ref="scrollRef">
       <div
         id="scroll-pink"
         class="scroll-box w-20 h-20 rounded-lg bg-pink-500"
@@ -62,8 +62,47 @@
     </div>
   </main>
 </template>
-
 <script setup lang="ts">
-// TODO: Implement the gsap scroll trigger
 import { Button } from "@/components";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/all";
+import { onMounted, ref } from "vue";
+
+// TODO:
+// [x] Implement the gsap scroll trigger
+
+// Register GSAP plugins
+gsap.registerPlugin(ScrollTrigger);
+
+// Define a ref for the parent element
+const scrollRef = ref<HTMLElement | null>(null);
+
+onMounted(() => {
+  // Ensure the scrollRef has been initialized
+  if (scrollRef.value) {
+    // Select all child elements with the class ".scroll-box" and add it into gsap array
+    const boxes: HTMLElement[] = gsap.utils.toArray(scrollRef.value.children);
+
+    boxes.forEach((box) => {
+      gsap.set(box, {
+        opacity: 0,
+      });
+
+      gsap.to(box, {
+        x: 100,
+        duration: 1,
+        scale: 1.5,
+        opacity: 1,
+        yoyo: true,
+        scrollTrigger: {
+          trigger: box,
+          start: "bottom 80%",
+          end: "top 20%",
+          scrub: true,
+        },
+        ease: "circ.inOut",
+      });
+    });
+  }
+});
 </script>
