@@ -16,6 +16,7 @@ TypeScript cannot handle type information for `.vue` imports by default, so we r
 
 ## Getting Started
 
+![repo image](repo-image.png)
 To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
