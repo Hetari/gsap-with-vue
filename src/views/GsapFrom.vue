@@ -27,7 +27,7 @@
     </p>
 
     <div class="mt-20">
-      <div id="green-box" class="w-20 h-20 bg-green-500 rounded-lg" />
+      <div ref="box" id="green-box" class="w-20 h-20 bg-green-500 rounded-lg" />
     </div>
     <div class="mt-20 text-end">
       <Button />
@@ -36,6 +36,22 @@
 </template>
 
 <script setup lang="ts">
-// TODO: Implement the gsap.from() method
 import { Button } from "@/components";
+import { ref, onMounted, type Ref } from "vue";
+
+// TODO:
+// [x] Implement the gsap.from() method
+import { gsap } from "gsap";
+const box: Ref<null> = ref(null);
+onMounted(() => {
+  gsap.from(box.value, {
+    xPercent: 150,
+    rotate: 105,
+    duration: 2.5,
+    ease: "power1.inOut",
+    // comment out the following line to see the difference:
+    repeat: -1,
+    yoyo: true,
+  });
+});
 </script>
