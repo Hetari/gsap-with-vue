@@ -29,6 +29,7 @@
         TextPlugin </a
       >{" "} plugin.
     </p>
+
     <div class="mt-20 text-end">
       <Button />
     </div>
@@ -36,6 +37,26 @@
 </template>
 
 <script setup lang="ts">
-// TODO: Implement gsap text animation
 import { Button } from "@/components";
+import { TextPlugin } from "gsap/all";
+import gsap from "gsap";
+import { onMounted } from "vue";
+
+// TODO:
+// [x] Implement gsap text animation
+
+onMounted(() => {
+  gsap.registerPlugin(TextPlugin);
+  gsap.to("#text", {
+    duration: 1,
+    opacity: 1,
+    y: 0,
+    text: {
+      value: "Your new text",
+      speed: 0.5,
+      preserveSpaces: true,
+    },
+    ease: "back.inOut(5)",
+  });
+});
 </script>
